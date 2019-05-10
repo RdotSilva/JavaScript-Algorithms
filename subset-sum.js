@@ -3,3 +3,18 @@
 
 const nums = [10, 15, 3, 7];
 const singleNum = 17;
+
+// O(n^2) time
+const checkSums = (arr, sum) => {
+	let trueOrFalse = [];
+	for (let i = 0; i < arr.length; i++) {
+		for (let j = i + 1; j < arr.length; j++) {
+			if (arr[j] === sum - arr[i]) {
+				trueOrFalse.push('true');
+			} else {
+				trueOrFalse.push('false');
+			}
+		}
+	}
+	return trueOrFalse.includes('true');
+};
