@@ -18,3 +18,21 @@ const checkSums = (arr, sum) => {
 	}
 	return trueOrFalse.includes('true');
 };
+
+// O(n) time
+const checkSums2 = (arr, sum) => {
+	let map = {},
+		results = [];
+	for (let i = 0; i < arr.length; i++) {
+		// If the key inside of map object value is NOT undefined push the key and value into map
+		if (map[arr[i]] !== undefined) {
+			// If item exists in map object push the key and value into results array
+			results.push([map[arr[i]], arr[i]]);
+		} else {
+			// Add item to map object if it doesn't exist
+			map[sum - arr[i]] = arr[i];
+		}
+	}
+	// If results array has anything inside of it return true, if no values inside return false
+	return results.length > 0;
+};
